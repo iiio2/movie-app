@@ -29,9 +29,10 @@ class MovieContextProvider extends Component {
   handleDelete = (movie) => {
     const movies = this.state.movies.filter((m) => m.id !== movie.id);
 
-    // const movieLength = (movies.length % 4 === 0);
-
-    if (this.state.currentPage > 1 && movies.length % 4 === 0) {
+    if (
+      this.state.currentPage > 1 &&
+      movies.length % this.state.pageSize === 0
+    ) {
       this.setState({ movies, currentPage: this.state.currentPage - 1 });
     }
 
